@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
 import os
-import shap
 import plotly.express as px
 from zipfile import ZipFile
 from xgboost import XGBClassifier
