@@ -8,7 +8,6 @@ import shap
 import os
 import plotly.express as px
 from zipfile import ZipFile
-from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cluster import KMeans
 from datetime import datetime
