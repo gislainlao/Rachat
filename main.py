@@ -81,7 +81,7 @@ def data_load(df):
 
 def load_model():
     '''loading the trained model'''
-    pickle_in = open('rfc_Classifier.pkl', 'rb') 
+    pickle_in = open('XGBClassifier.pkl', 'rb') 
     clf = pickle.load(pickle_in)
     return clf
 
