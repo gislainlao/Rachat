@@ -410,6 +410,6 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
         )   
             if chk:
                 st.success('Rapport créé avec succes!',icon="✅")
-       st.markdown('***')
+       st.markdown("***")
        Linkedin="Merci d'avoir parcouru cette application Web !! si vous voulez me contacter, vous pouvez me trouver sur [Linkedin](https://www.linkedin.com/in/essohanam-laokpezi/)* ❤️"
        st.markdown(Linkedin,unsafe_allow_html=True)
