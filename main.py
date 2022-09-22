@@ -267,9 +267,11 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             st.write("**Valeur de Rachat : **", infos_client["Valeur_rachat"].values[0])
 
         st.header("**Analyse de données du client**")
-
+        probabi=val_client(resultat_final, chk_id)
         st.markdown("<u>Probabilité de Rachat: </u>", unsafe_allow_html=True)
-        st.write(val_client(resultat_final, chk_id))
+        
+        st.write("**Probabilité de Rachat : **{:.0f} %".format(round(float(probabi)*100,2)))
+        
         st.markdown("<u>Données du Client :</u>", unsafe_allow_html=True)
         st.write(identite_client(sample, chk_id))
 
