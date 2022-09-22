@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
+import shap
 import os
 import plotly.express as px
 from zipfile import ZipFile
@@ -183,7 +184,7 @@ html_temp = """
 <div style="background-color: #D92F21; padding:10px; border-radius:10px">
 <h1 style="color: white; text-align:center">TABLEAU DE BORD DE PRÉVISION DES RACHATS</h1>
 </div>
-<p style="font-size: 20px; font-weight: bold; text-align:center">Cette application web permet de visualiser le portefeuil de SUNU Vie et de faire des préisions...</p>
+<p style="font-size: 20px; font-weight: bold; text-align:center">Cette application web permet de visualiser le portefeuil de SUNU Vie et de faire des prévisions...</p>
 """
 st.markdown(html_temp, unsafe_allow_html=True)
 
@@ -254,9 +255,9 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
 
 
             #Customer information display : Customer Gender, Age, Family status, Children, …
-        st.header("**INFORMATION DU CLIENT**")
+        st.header("**INFORMATION DE L'ASSURÉ**")
 
-        if st.checkbox("Afficher les informations du client ?"):
+        if st.checkbox("Afficher les informations de l'assuré ?"):
 
             infos_client = identite_client(data, chk_id)
             st.write("**Gender : **", infos_client["Genre"].values[0])
