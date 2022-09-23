@@ -38,15 +38,15 @@ def data_load(df):
     Ag=round(((pd.to_datetime(df.Date_effet, date_format)-pd.to_datetime(df.Date_naissance, date_format)).dt.days)/365,0)
     Anc=round(((pd.to_datetime(df.Date_cloture, date_format)-pd.to_datetime(df.Date_effet, date_format)).dt.days)/365,0)
     gr=round(((pd.to_datetime(df.Date_cloture, date_format)-pd.to_datetime(df.Date_naissance, date_format)).dt.days)/365,0)
-    dr=round(((pd.to_datetime(df.Date_echeance, date_format)-pd.to_datetime(df.Date_effet, date_format)).dt.days)/365,0)
+    #dr=round(((pd.to_datetime(df.Date_echeance, date_format)-pd.to_datetime(df.Date_effet, date_format)).dt.days)/365,0)
 
 
-    df=df.assign(Genre=0)
-    for i in range(len(df.Police)):
-        if df.Titre[i] == "MME" or  df.Titre[i]=="MLE":
-            df.Genre[i]='F'
-        else:
-            df.Genre[i]='G'
+    #df=df.assign(Genre=0)
+    #for i in range(len(df.Police)):
+      #  if df.Titre[i] == "MME" or  df.Titre[i]=="MLE":
+        #    df.Genre[i]='F'
+        #else:
+        #    df.Genre[i]='G'
 
     for i in range(len(df)):
         if df.IMpayé_Rachat[i] < 0:
@@ -55,10 +55,10 @@ def data_load(df):
     df['Age_souscription'] = pd.DataFrame(Ag)
     df['Ancienete_contract'] = pd.DataFrame(Anc)
     df['Ag_Rachat'] = pd.DataFrame(gr)
-    df['Dure_contrat'] = pd.DataFrame(dr)
+   # df['Dure_contrat'] = pd.DataFrame(dr)
     data = df
     Police = df['Police']
-    df=df.drop(columns = ['Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Titre','Prime_Totale','Valeur_rachat','Date_echeance'])
+    df=df.drop(columns = ['Class_Social','Mode_paiement','Type_produit','Total_PB','Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Date_echeance','Titre','Valeur_rachat','Prime_Totale','Mode_comptabilisation','Age_souscription'])
     cat_data=[]
     num_data=[]
     for i,c in enumerate(df.dtypes):
@@ -80,7 +80,7 @@ def data_load(df):
 
 def load_model():
     '''loading the trained model'''
-    pickle_in = open('XGBClassifier.pkl', 'rb') 
+    pickle_in = open('LGBClassifier.pkl', 'rb') 
     clf = pickle.load(pickle_in)
     return clf
 
