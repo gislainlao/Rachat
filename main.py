@@ -372,6 +372,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             Resultat2['Provision_Mathématique'] = pd.DataFrame(Pm)
             Resultat2['Valeur_Rachat'] = pd.DataFrame(Val)
             Resultat2['Montant_Predit']= pd.DataFrame((valeur_rachat_total(resultat_final, data.Produit.unique())))
+            Resultat2['Taux_Rachat(%)'] = round((Resultat2.Montant_Predit/Resultat2.Valeur_Rachat)*100,2)
            # Resultat2['Nombre_Polices'] = pd.DataFrame(Nb)
            # Resultat2['Nombrre_predit'] =pd.DataFrame(Nb_pred)
 
