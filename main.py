@@ -19,9 +19,9 @@ plt.style.use('fivethirtyeight')
     #df= pd.read_excel("C:/Users/22892/Desktop/FINAL/Final.xlsx")
     
     #return df
-#def data_load(df):
+def data_load(df):
    
- #   df=df.assign(Class_Social=0)
+  #  df=df.assign(Class_Social=0)
  #   for i in range(len(df)):
  #       if df.Prime_Totale[i] <= 10000 :
   #          df.Class_Social[i]= 0
