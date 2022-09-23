@@ -19,20 +19,20 @@ plt.style.use('fivethirtyeight')
     #df= pd.read_excel("C:/Users/22892/Desktop/FINAL/Final.xlsx")
     
     #return df
-def data_load(df):
+#def data_load(df):
    
-    df=df.assign(Class_Social=0)
-    for i in range(len(df)):
-        if df.Prime_Totale[i] <= 10000 :
-            df.Class_Social[i]= 0
-        else:
-            if df.Prime_Totale[i] > 10000 and df.Prime_Totale[i] <= 50000 :
-                df.Class_Social[i]= 1
-            else:
-                if df.Prime_Totale[i] > 50000 and df.Prime_Totale[i] <= 100000 :
-                    df.Class_Social[i]= 2
-                else:
-                    df.Class_Social[i]= 3
+ #   df=df.assign(Class_Social=0)
+ #   for i in range(len(df)):
+ #       if df.Prime_Totale[i] <= 10000 :
+  #          df.Class_Social[i]= 0
+   #     else:
+  #          if df.Prime_Totale[i] > 10000 and df.Prime_Totale[i] <= 50000 :
+    #            df.Class_Social[i]= 1
+     #       else:
+     #           if df.Prime_Totale[i] > 50000 and df.Prime_Totale[i] <= 100000 :
+      #              df.Class_Social[i]= 2
+      #          else:
+       #             df.Class_Social[i]= 3
     
     date_format = "%Y-%m-%d"
     Ag=round(((pd.to_datetime(df.Date_effet, date_format)-pd.to_datetime(df.Date_naissance, date_format)).dt.days)/365,0)
@@ -58,7 +58,8 @@ def data_load(df):
    # df['Dure_contrat'] = pd.DataFrame(dr)
     data = df
     Police = df['Police']
-    df=df.drop(columns = ['Class_Social','Type_produit','Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Date_echeance','Valeur_rachat','Prime_Totale','Age_souscription'])
+    #'Class_Social'
+    df=df.drop(columns = ['Type_produit','Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Date_echeance','Valeur_rachat','Prime_Totale','Age_souscription'])
     cat_data=[]
     num_data=[]
     for i,c in enumerate(df.dtypes):
@@ -261,10 +262,11 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
         if st.checkbox("Afficher les informations de l'assuré ?"):
 
             infos_client = identite_client(data, chk_id)
-            st.write("**Gender : **", infos_client["Genre"].values[0])
+          #  st.write("**Gender : **", infos_client["Genre"].values[0])
             st.write("**Age : ** ", infos_client["Ag_Rachat"].values[0]) 
             st.write("**Nom de l'Assuré : **", infos_client["Non_Assure"].values[0])
             st.write("**Produit : **", infos_client["Produit"].values[0])
+            st.write("**Type Produit : **", infos_client["Type_produit"].values[0])
             st.write("**Prime Payée : **", infos_client["Prime_Totale"].values[0])
             st.write("**Valeur de Rachat : **", infos_client["Valeur_rachat"].values[0])
 
