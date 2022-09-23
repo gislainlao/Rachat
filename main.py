@@ -58,7 +58,7 @@ def data_load(df):
    # df['Dure_contrat'] = pd.DataFrame(dr)
     data = df
     Police = df['Police']
-    df=df.drop(columns = ['Class_Social','Mode_paiement','Type_produit','Total_PB','Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Date_echeance','Titre','Valeur_rachat','Prime_Totale','Mode_comptabilisation','Age_souscription'])
+    df=df.drop(columns = ['Class_Social','Type_produit','Non_Assure','Police','Date_cloture','Date_naissance','Date_effet','Date_echeance','Valeur_rachat','Prime_Totale','Age_souscription'])
     cat_data=[]
     num_data=[]
     for i,c in enumerate(df.dtypes):
