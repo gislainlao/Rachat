@@ -380,7 +380,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             #Montant1 = resultat_final[resultat_final.predictions == 1].Valeur_rachat.sum()
             Montant2 = resultat_final.Valeur_Rachat_Proba.sum()
             #st.write(Montant1)
-            st.write(Montant2)
+            
             st.write(Resultat2)
             
             st.write("**La valeur de rachat totale prédite pour l'ensemble du portefeuil est : **{:.0f}".format(Montant2))
