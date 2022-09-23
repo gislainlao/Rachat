@@ -210,8 +210,10 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
         resultat_final['probabilite'] = proba
         resultat_final['Valeur_Rachat_Proba'] = data.Valeur_rachat*proba
 
-        target = resultat_final.predictions.value_counts()
-
+        #target = resultat_final.predictions.value_counts()
+        s1=data.Valeur_rachat.sum()
+        s2=resultat_final.Valeur_Rachat_Proba.sum()
+        target=[s1,s2]
 #Loading selectbox
         chk_id = st.sidebar.selectbox("Client ID", id_client)
 
@@ -360,7 +362,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             Pm,Val,Nb,Nb_pred = inf_prod(data, data.Produit.unique(),resultat_final)
 
             chk_prod = st.selectbox("Type de produit", data.Produit.unique())
-            st.write("**La valeure de rachat prédite pour le Produit est : **{:.0f}".format(valeur_rachat_prod(resultat_final, chk_prod)))
+            st.write("**La valeur de rachat prédite pour le Produit est : **{:.0f}".format(valeur_rachat_prod(resultat_final, chk_prod)))
 
             st.markdown("<u>Donnée par produit :</u>", unsafe_allow_html=True)
 
@@ -370,16 +372,18 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             Resultat2['Provision_Mathématique'] = pd.DataFrame(Pm)
             Resultat2['Valeur_Rachat'] = pd.DataFrame(Val)
             Resultat2['Montant_Predit']= pd.DataFrame((valeur_rachat_total(resultat_final, data.Produit.unique())))
-            Resultat2['Nombre_Polices'] = pd.DataFrame(Nb)
-            Resultat2['Nombrre_predit'] =pd.DataFrame(Nb_pred)
+           # Resultat2['Nombre_Polices'] = pd.DataFrame(Nb)
+           # Resultat2['Nombrre_predit'] =pd.DataFrame(Nb_pred)
 
             #Resultat2 = Resultat2[['Produit','Provision_Mathématique','Valeur_Rachat','Nombrre_predit','Montant_Predit']]
-            Montant1 = resultat_final[resultat_final.predictions == 1].Valeur_rachat.sum()
+            #Montant1 = resultat_final[resultat_final.predictions == 1].Valeur_rachat.sum()
             Montant2 = resultat_final.Valeur_Rachat_Proba.sum()
-            st.write(Montant1)
+            #st.write(Montant1)
             st.write(Montant2)
             st.write(Resultat2)
-
+            
+            st.write("**La valeur de rachat totale prédite pour l'ensemble du portefeuil est : **{:.0f}".format(Montant2))
+           
             csv = convert_df(Resultat2)
             m = st.markdown("""
             <style>
