@@ -206,7 +206,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
         clf = load_model()
         proba,pred = load_prediction(sample, clf)
 
-        resultat_final = pd.concat([data.Police,data.Produit,data.Valeur_rachat], axis = 1).dropna()
+        resultat_final = pd.concat([data.Police,data.Produit,data.Type_produit,data.Valeur_rachat], axis = 1).dropna()
         resultat_final['predictions'] = pred
         resultat_final['probabilite'] = proba
         resultat_final['Valeur_Rachat_Proba'] = data.Valeur_rachat*proba
@@ -371,6 +371,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
             prd = pd.DataFrame(data.Produit.unique())
             Resultat2 = pd.concat([prd], axis = 1)
             Resultat2.columns = ['Produit']
+            Resultat2['Nombre_Produit'] = pd.DataFrame(Nb)
             Resultat2['Provision_Mathématique'] = pd.DataFrame(Pm)
             Resultat2['Valeur_Rachat'] = pd.DataFrame(Val)
             Resultat2['Montant_Predit']= pd.DataFrame((valeur_rachat_total(resultat_final, data.Produit.unique())))
