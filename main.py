@@ -206,7 +206,7 @@ if Garantie=='ASSURANCE INDIVIDUELLE':
         clf = load_model()
         proba,pred = load_prediction(sample, clf)
 
-        resultat_final = pd.concat([data.Police,data.Produit,data.Type_produit,data.Valeur_rachat], axis = 1).dropna()
+        resultat_final = pd.concat([data.Police,data.Produit,data.Type_produit,data.Valeur_rachat], axis = 1)
         resultat_final['predictions'] = pred
         resultat_final['probabilite'] = proba
         resultat_final['Valeur_Rachat_Proba'] = data.Valeur_rachat*proba
